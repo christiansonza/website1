@@ -1,0 +1,732 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="shortcut icon" href="data:image/jpeg;base64,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" type="image/x-icon">
+    <title>The Pabebe One</title>
+    <style>
+        body{
+            margin: 0;
+          padding: 0;
+         font-family: Arial, Helvetica, sans-serif;
+      }
+            
+        h2{
+            position: absolute;
+            left: 80px;
+            top:-8px;
+        }
+      .nav{
+          display: flex;
+          justify-content: center;
+          height: 50px;
+          top: 0%;
+          position: fixed;
+          background-color: rgb(255, 255, 255);
+          box-shadow: 1px 1px 1px 1px #ccc;
+          z-index:1;
+          width: 100%;
+      }
+      a{
+          font-family:Arial, Helvetica, sans-serif;
+          color: black;
+          margin-left: 20px;
+          margin-right: 20px;
+          text-decoration: none;
+          margin-top: 15px;
+      }
+     a:hover{
+         text-decoration: underline;
+         color: rgb(84, 11, 209);
+     }
+     .favicon{
+       
+        font-size: 20px;
+        display:flex;
+       
+        margin-right: 2rem;
+        gap: 20px;
+        cursor: pointer;
+        position: absolute;
+        top: 14px;
+       left: 70rem;
+        z-index: 1;
+     }
+
+     #menu{
+         display: none;
+     }
+     .about-us{
+         background-color: #fff;
+         position: absolute;
+         top: 40rem;
+         width: 100%;
+         height: 30rem;
+     }
+     .tulips{
+     width: 100%;
+     height: 95vh;
+     position: absolute;
+         top: 3rem;
+         left: 0;
+         z-index: -1;
+         background-image:linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3)),url(https://i.pinimg.com/originals/32/d2/ac/32d2acefcf04f476f6b4b772140f941e.jpg);
+        
+ }  
+iframe{
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    top: 8rem;
+    left: 6rem;
+}
+.why{
+    width: 40rem;
+    position: absolute;
+    font-size: 28px;
+    left: 40rem;
+    top: 8rem; 
+}
+.about-p{
+    width: 40rem;
+    position: absolute;
+    left: 40rem;
+    top: 12rem;
+}
+.about-p2{
+    width: 40rem;
+    position: absolute;
+    left: 40rem;
+    top: 16.5rem;
+}
+.lmore{
+    position: absolute;
+    left: 40rem;
+    top: 23rem;
+    border: none;
+    background-color: black;
+    color: white;
+    width: 115px;
+    height: 35px;
+    border-radius: 100px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.lmore:hover{
+    background-color: rgb(72, 69, 69);
+}
+.lmore:active{
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+  
+ .card4{
+display: flex;
+gap: 40px;
+position: absolute;
+top: 70rem;
+
+background-color: #2a2938;
+width: 100%;
+height: 22vh;
+ }
+ .cards1{
+     cursor: pointer;
+     position: relative;
+     left: 10rem;
+     top:40px;
+     background-color: white;
+     height: 60px;
+     width: 210px;
+     text-align: center;
+     border-radius: 6px;
+ }
+ .four1,.four2,.four3,.four4{
+     
+     font-size: 14px;
+     margin-top: 14px;
+     margin-left: 20px;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+ }
+ .four1{
+     margin-left: 30px;
+ }
+ 
+ .four8{
+     margin-left: 18px;
+ }
+ .four8,.four5,.four6,.four7{
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+margin-top:-30px;
+font-size: 12px;
+position: absolute;
+left: 60px;
+color: rgb(138, 123, 123);
+ }
+ .four4{
+     margin-left: 36px;
+ }
+ .four5{
+     margin-left: -4px;
+ }
+ .four6{
+     margin-left: 16px;
+ }
+ #truck,#money,#hand,#pay{
+     gap: 60px;
+     position: absolute;
+     top: 16px;
+     left: 15px;
+     font-size: 32px
+ }
+ #hand{
+     margin-top: -2px;
+     margin-left: 10px;
+ }
+ .cards1:hover{
+transform: scale(1.1);
+transition: all 0.5s ease;
+background-color: black;
+color: white;
+ }
+    .butterfly1{
+        font-family:Arial, Helvetica, sans-serif;
+font-size: 50px;
+position: absolute;
+top: 11rem;
+left: 7rem;
+    }
+ 
+ .butterfly2{
+position: absolute;
+top: 16rem;
+left: 7rem;
+font-size: 22px;
+color: rgb(74, 23, 136);
+ }
+
+ .butterfly3{
+     width: 40rem;
+     position: absolute;
+top: 18.5rem;
+left: 7rem;
+ }
+ .button1{
+     position: absolute;
+top: 26rem;
+left: 7rem;
+border: none;
+border-radius: 100px;
+color: white;
+background-color: black;
+font-size: 16px;
+width: 120px;
+height: 30px;
+cursor: pointer;
+ }
+ .button1:hover{
+background-color: rgb(82, 78, 78);
+ }
+ .button1:active{
+     color: black;
+     background-color: white;
+ }
+ .cont-us{
+     position: absolute;
+     top: 44rem;
+     left: 40rem;
+     z-index: 1;
+    
+ }
+.box1{
+    height: 50px;
+     background-color: rgb(161, 166, 227);
+     width: 72em;
+     position: absolute;
+     top: 42rem;
+     left: 6rem;
+     border-radius: 8px;
+}
+.contact1{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+
+}
+
+form{
+    display: grid;
+    position: absolute;
+    top:150rem;
+    left: 8rem;
+    grid-gap: 8px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 1px 1px 1px 1px#ccc;
+    border-radius: 10px;
+
+}
+
+.name,.email,.add,.msg{
+height: 30px;
+width: 30rem;
+border-radius: 6px;
+border: 1px solid #ccc;
+padding-left: 10px;
+}
+.msg{
+
+height: 6rem;
+}
+.sendmsg{
+    font-size: 15px;
+    margin-top: 8px;
+    width: 8rem;
+    height: 30px;
+    border: none;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius:8px;
+    cursor: pointer;
+}
+
+.sendmsg:hover{
+    background-color: rgb(52, 46, 46);
+}
+.img2{
+    position: absolute;
+    top: 150rem;
+    left: 55rem;
+    z-index: auto;
+    width: 20rem;
+   
+}
+.img2:hover{
+    transform: scale(1.1);
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.latest{
+    position: absolute;
+    top: 80rem;
+    left: 6rem;
+    background-color: rgb(252, 201, 252);
+    height: 50px;
+     width: 72em;
+     border-radius: 8px;
+ 
+}
+.lproduct{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.Main,.Main2,.Main3{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Image1,.Image2,.Image3,.Image4,.Image5,.Image6,.Image7,.Image8,.Image9,.Image10,.Image11,.Image12{
+    background-size: cover;
+background-position: center;
+height: 12rem;
+width: 100%;
+border-radius: 8px 8px 0 0;
+}
+.Image1{
+background-image: url(https://www.warrenphotographic.co.uk/photography/bigs/06053-Heliconius-butterfly-white-background.jpg);
+}
+.Image2{
+background-image: url(https://cdn4.vectorstock.com/i/1000x1000/34/23/hand-drawn-butterfly-on-white-background-vector-24073423.jpg);
+
+}
+.Image3{
+    background-image: url(https://media.istockphoto.com/photos/monarch-butterfly-isolated-on-white-background-picture-id157522302?b=1&k=20&m=157522302&s=170667a&w=0&h=FVibad6ygyBUNn0j6kZ6iXY_0WjHR6DXFWBqO54Mcj8=);
+}
+.Image4{
+    background-image: url(https://st4.depositphotos.com/3141295/38584/i/950/depositphotos_385848584-stock-photo-great-red-butterfly-flying-isolated.jpg?forcejpeg=true);
+}
+.Image5{
+    background-image: url(https://i.pinimg.com/736x/2d/67/85/2d678585160f713b92fb9d5bb118baac--butterfly-watercolor-butterfly-drawing.jpg);
+}
+.Image6{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDf0Dlzjk4IaUMqGqq_DAAUe5p5aqt7D_Xqw&usqp=CAU);
+}
+.Image7{
+    background-image: url(https://media.istockphoto.com/photos/white-butterfly-picture-id509188822?b=1&k=20&m=509188822&s=170667a&w=0&h=FyQSsuhKDxxgYo4NReATw-rGBjm_6V_r9Wv793xAOh4=);
+}
+.Image8{
+    background-image: url(https://media.gettyimages.com/photos/butterfly-and-flower-isolated-on-white-background-picture-id493326900?b=1&k=20&m=493326900&s=170667a&w=0&h=F2D-8JaZGvuJQIBiCU5wbTDaMLRWV0wk922Hj9u2qPM=);
+}
+.Image9{
+    background-image: url(https://montgomeryparks.org/wp-content/uploads/2017/03/Black-Swallowtail-scaled-1-490x382.jpg);
+}
+.Image10{
+    background-image: url(https://dearsam.com/img/600/744/resize/w/h/white-butterfly-50x70_3a189.jpg);
+}
+.Image11{
+    background-image: url(https://cdn.xxl.thumbs.canstockphoto.com/butterfly-turquoise-emperor-isolated-on-white-background-stock-photo_csp73442029.jpg);
+}
+.Image12{
+    background-image: url(https://img.myloview.com/posters/the-beautiful-flying-pale-green-butterfly-on-white-background-wiith-shadow-beneath-400-261803462.jpg);
+}
+.Container{
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    position: relative;
+    left: 10.5rem;
+    top: 84rem;
+    width: 250px;
+    height: 300px;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    cursor: pointer;
+    border-radius: 8px;
+ }
+.bttr{
+    margin-top: 8px;
+    margin-top: center;
+    text-align: center;
+}
+.bttr2{
+    text-align: center;
+    margin-top: -8px;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.Container:hover{
+transform: scale(1.05);
+transition: all 0.6s ease;
+background-color: #2a2938;
+color: white;
+}
+.cus1{
+    position: absolute;
+    top: 145rem;
+    left: 6rem;
+    background-color: rgb(252, 201, 252);
+    height: 50px;
+     width: 72em;
+     border-radius: 8px;
+ 
+}
+.last{
+    background-color:#fff;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    width: 100%;
+    height: 18rem;
+    position: absolute;
+    top: 172rem;
+z-index: -1;
+}
+.footer{
+    
+    margin-top: 116rem;
+    z-index: 1;
+    margin-left: 150px;
+}
+.footer1{
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 100px;cursor: pointer;
+}
+.footer2{
+    margin-top: -13.5rem;
+    z-index: 1;
+    margin-left: 400px;cursor: pointer;
+}
+.footer1{
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 100px;cursor: pointer;
+}
+.footer4{
+    margin-top: -9.2rem;
+    z-index: 1;
+    margin-left: 42rem;cursor: pointer;
+}
+.footer5{
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 100px;cursor: pointer;
+}
+.footer6{
+    margin-top: -13.5rem;
+    z-index: 1;
+    margin-left: 60rem;cursor: pointer;
+}
+.footer7{
+    margin-top: 2px;
+    margin-left: 5px;
+    margin-right: 100px;
+}
+#credit{
+    font-size: 25px;
+    margin-left: 6px;cursor: pointer;
+}
+.Last{
+    background-color: #fff;
+    margin-top: 4rem;
+    height: 40px;
+   
+}
+.Last1{
+    text-align: center;
+    margin-top: 80px;
+    letter-spacing: 1px;
+}.footer1:hover,.footer3:hover,.footer5:hover,.footer7:hover{
+text-decoration: underline;
+color: red;
+}
+#credit:hover{
+    color: rgb(36, 36, 193);
+}
+.mrr:hover{
+    text-decoration: underline;
+    
+}
+
+ @media(max-width:700px){
+
+     .menu1{
+         display: block;
+         font-family: Arial, Helvetica, sans-serif;
+         margin-right: -10rem;
+         margin-top: 14px;
+         font-size: 18px;
+     }
+    
+     .favicon,#menu{
+        display: none;
+     }
+     h2{
+       display: none;
+     }
+     a{
+        display: block;
+     }
+     .tulips{
+         width: 100vh;
+         background-position: center;
+         background-size: cover;
+     }
+   .butterfly1{
+      position: absolute;
+      top: 10rem;
+      color: white;
+      left: 4rem;
+   }
+   .butterfly2{
+       position: absolute;
+       left: 4rem;
+       top: 14.5rem;
+       color: rgb(1, 1, 247);
+       width: 150px;
+   }
+   .butterfly3{
+       position: absolute;
+       left:4rem;
+       width: 20rem;
+       text-align: justify;
+   }
+ }
+    </style>
+</head>
+<body>
+    
+    <nav class="nav">
+        <h2>Butterfly</h2>
+        <a href="">Home</a>
+        <a href="#nabout">About</a>
+        <a href="#nproducts">Products</a>
+        <a href="">Review</a>
+        <a href="#ncontact">Contact</a>
+    </nav>
+        <div class="favicon">
+        <i class="fas fa-shopping-cart"></i>
+        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-user"></i>
+        <i id="menu" class="fa-solid fa-bars"></i>
+       
+        <div class="container">
+        </div>
+        
+    </div>
+    <article>
+   <img class="tulips" src="" alt="">
+</article>
+<div id="nabout" class="about-us">
+    <iframe width="500" height="280" src="https://www.youtube.com/embed/COtpTt-ICwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 class="why">Dora The Pabebe</h2>
+<p class="about-p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet blanditiis officia ipsa, consequatur exercitationem at accusamus voluptas.  fugiat! Distinctio, aut possimus! Fugit, qui quam adipisci a in dolor impedit!</p>
+<p class="about-p2">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem animi facere maxime modi, magnam cumque Exercitationem animi tenetur labore iusto, ab ex sint autem minima!
+</p>
+<button class="lmore">Learn More</button>
+</div>
+
+<div class="card4">
+    <div class="cards1">
+        <h6 class="four1">Free Shipping</h6>
+        <p class="four8">On All Orders</p>
+        <i id="truck" class="fa-solid fa-truck-fast"></i>
+    </div>
+    <div class="cards1">
+        <h6 class="four1">10 Days Return</h6>
+        <p class="four5">Money Back Guarantee</p>
+        <i id="money" class="fa-solid fa-sack-dollar"></i>
+    </div>
+    <div class="cards1">
+        <h6 class="four3">Offer & Gift</h6>
+        <p class="four6">On All Orders</p>
+        <i id="hand" class="fa-solid fa-hand-holding-dollar"></i>
+    </div>
+    <div class="cards1">
+        <h6 class="four4">Secure Payment</h6>
+        <p class="four7">Protected By Paypal</p>
+        <i id="pay" class="fa-brands fa-cc-paypal"></i>
+    </div>
+</div>
+<div>
+    <h1 class="butterfly1">Baby Butterfly</h1>
+    <h3 class="butterfly2">Dora The Pabebe Butterfly</h3>
+    <p class="butterfly3">Butterflies are insects in the macrolepidopteran clade Rhopalocera from 
+    the order Lepidoptera, which also includes moths. Adult butterflies have large,
+    often brightly coloured wings, and conspicuous, fluttering flight. The group 
+    comprises the large superfamily Papilionoidea, which contains at least one former group.</p>
+    <button class="button1">Shop Now</button>
+</div>
+<div class="box1">
+    <p class="contact1"><span style="color:rgba(66, 10, 111, 0.83)">About</span> Us</p>
+</div>
+<div id="nproducts" class="latest"><p class="lproduct">Latest <span style="color:purple ;">Products</span></p></div>
+<div class="Main">
+    <div class="Container">
+        <div class="Image1"></div>
+        <h3 class="bttr">Butterfly</h3>
+        <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Container">
+    <div class="Image2"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Container">
+    <div class="Image3"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Container">
+    <div class="Image4"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Main2">
+<div class="Container">
+    <div class="Image5"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Container">
+    <div class="Image6"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Container">
+    <div class="Image7"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div>
+<div class="Container">
+    <div class="Image8"></div>
+    <h3 class="bttr">Butterfly</h3>
+    <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+</div></div>
+<div class="Main3">
+    <div class="Container">
+        <div class="Image9"></div>
+        <h3 class="bttr">Butterfly</h3>
+        <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+    </div>
+    <div class="Container">
+        <div class="Image10"></div>
+        <h3 class="bttr">Butterfly</h3>
+        <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+    </div>
+    <div class="Container">
+        <div class="Image11"></div>
+        <h3 class="bttr">Butterfly</h3>
+        <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+    </div>
+    <div class="Container">
+        <div class="Image12"></div>
+        <h3 class="bttr">Butterfly</h3>
+        <p class="bttr2">Butterflies can't see their wings. They can't see how truly beautiful they are.</p>
+    </div></div>
+</div>
+<div class="cus">
+    <div id="ncontact" class="cus1"><p class="lproduct"><span style="color:rgb(34, 11, 84) ;">Contact</span> Us</p></div>
+</div>
+<div class="form1"> 
+<form action="">
+    <input class="name" type="text" placeholder="Name">
+    <input class="email" type="email" placeholder="Email">
+    <input class="add" type="text" placeholder="Address">
+    <input class="msg" type="message" placeholder="Message">
+    <button class="sendmsg">Send Message</button>
+</form></div>
+<div>
+    <img class="img2" src="https://media.istockphoto.com/photos/tropical-purple-flying-butterfly-isolated-on-white-background-picture-id964579476?k=20&m=964579476&s=612x612&w=0&h=OIK5o5PxIiBnILSuyqibkhj8NEVRc_vhDIHTgcIasNM=" alt="">
+</div>
+<div class="last"></div>
+<div class="footer">
+    <h3>Quick Links</h3>
+  <p class="footer1">Home</p>
+  <p class="footer1">About</p>
+  <p class="footer1">Products</p>
+  <p class="footer1">Review</p>
+  <p class="footer1">Contact</p>
+</div>
+<div class="footer2">
+    <h3>Extra Links</h3>
+  <p class="footer3">My Account</p>
+  <p class="footer3">My Order</p>
+  <p class="footer3">My favorite</p>
+</div>
+<div class="footer4">
+    <h3>Locations</h3>
+  <p class="footer5">India</p>
+  <p class="footer5">Canada</p>
+  <p class="footer5">France</p>
+  <p class="footer5">United States</p>
+  <p class="footer5">Philippines</p>
+</div>
+<div class="footer6">
+<h3>Contact Info</h3>
+<p class="footer7">+123-456-7890</p>
+<p class="footer7">pororocute@gmail.com</p>
+<p class="footer7">dorapabebe@gmail.com</p>
+<i id="credit" class="fa-brands fa-cc-paypal"></i>
+<i id="credit" class="fa-brands fa-cc-visa"></i>
+<i id="credit" class="fa-brands fa-cc-amex"></i>
+<i id="credit" class="fa-brands fa-cc-mastercard"></i>
+<i id="credit" class="fa-brands fa-cc-discover"></i>
+</div>
+<div class="Last">
+    <p class="Last1">Created By<a href="https://i.mydramalist.com/eJ8Dd_5c.jpg"><span class="mrr" style="color: rgb(39, 16, 141);"> Mr. Pororo</span></a>  | All Rights  Reserved</p>
+</div>
+</div>
+</body>
+</html>
